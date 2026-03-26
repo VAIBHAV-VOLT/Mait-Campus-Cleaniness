@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAIT Clean Campus Awareness Study 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --text: #163020;
+            --muted: #5c7a67;
+            --green: #2e7d32;
+            --green-2: #4caf50;
+            --gold: #f9a826;
+            --shadow: 0 20px 40px rgba(22, 48, 32, .12);
+            --radius: 24px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at top left, rgba(76, 175, 80, .18), transparent 25%), radial-gradient(circle at top right, rgba(249, 168, 38, .15), transparent 22%), linear-gradient(135deg, #f7fff7, #eefcf0 45%, #f9fff5);
+            line-height: 1.7
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: 0 auto
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(14px);
+            z-index: 1000
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            color: var(--green)
+        }
+
+        .brand-badge {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--green), var(--green-2));
+            color: #fff
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted)
+        }
+
+        .hero {
+            padding: 56px 0 30px;
+            margin-bottom: 40px
+        }
+
+        .hero-grid,
+        .stats,
+        .grid-2,
+        .grid-3,
+        .contributors {
+            display: grid;
+            gap: 32px
+        }
+
+        .hero-grid {
+            grid-template-columns: 1.15fr .85fr;
+            align-items: center
+        }
+
+        .stats {
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 40px
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr)
+        }
+
+        .grid-3,
+        .contributors {
+            grid-template-columns: repeat(3, 1fr)
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .75);
+            border: 1px solid rgba(255, 255, 255, .65);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px)
+        }
+
+        .hero-card,
+        .card,
+        .person,
+        .survey-box,
+        .stat-card {
+            padding: 28px
+        }
+
+        .hero-image {
+            overflow: hidden;
+            min-height: 420px;
+            position: relative
+        }
+
+        .hero-image img,
+        .gallery-item img,
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: 18px;
+            left: 18px;
+            background: rgba(255, 255, 255, .9);
+            border-radius: 18px;
+            padding: 14px 18px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--green), var(--green-2));
+            color: #fff
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: var(--green);
+            border: 1px solid rgba(46, 125, 50, .12)
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px
+        }
+
+        .gallery-item {
+            border-radius: 22px;
+            overflow: hidden;
+            min-height: 220px;
+            box-shadow: var(--shadow)
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            min-height: 460px
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 10px auto 16px;
+            overflow: hidden;
+            border: 5px solid #e4f4e6
+        }
+
+        .linkedin-btn {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 11px 16px;
+            border-radius: 999px;
+            background: #0a66c2;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        .star-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #ffd54f, var(--gold));
+            color: #5d3b00;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: .8rem;
+            font-weight: 800
+        }
+
+        .person {
+            position: relative;
+            text-align: center
+        }
+
+        section {
+            margin-bottom: 60px
+        }
+
+        .footer {
+            text-align: center;
+            padding: 36px 0 60px;
+            color: var(--muted)
+        }
+
+        @media(max-width:980px) {
+
+            .hero-grid,
+            .stats,
+            .grid-2,
+            .grid-3,
+            .contributors {
+                grid-template-columns: 1fr
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .gallery-item.large {
+                grid-column: span 2
+            }
+        }
+
+        @media(max-width:640px) {
+            .gallery {
+                grid-template-columns: 1fr
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+                min-height: 300px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-badge">🧹</div>
+                <div>MAIT Clean Campus Awareness Study</div>
+            </div>
+            <div class="nav-links"><a href="#about">About</a><a href="#contributors">Champions</a><a
+                    href="#survey">Survey</a></div>
+        </div>
+    </nav>
+    <header class="hero">
+        <div class="container hero-grid">
+            <div class="hero-card glass">
+                <h1>MAIT Clean Campus Awareness Study 2026</h1>
+                <p>A student-led awareness and survey initiative at <strong>MAIT</strong> focused on understanding how
+                    students perceive campus cleanliness and share meaningful habits.</p>
+                <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:24px"><a class="btn btn-primary"
+                        href="#survey">📋 View Survey Section</a><a class="btn btn-secondary" href="champions.html">⭐
+                        View All Champions</a></div>
+            </div>
+            <div class="hero-image glass"><img src="images/campus/hero.jpg" alt="MAIT campus hero">
+                <div class="hero-badge"><strong>✨ Clean Thoughts. Cleaner Spaces.</strong></div>
+            </div>
+        </div>
+        <div class="container stats">
+            <div class="stat-card glass">📋<p>Campus Survey-Based Study</p>
+            </div>
+            <div class="stat-card glass">🧠<p>Student Cleanliness Insights</p>
+            </div>
+            <div class="stat-card glass">📍<p>Dirty & Clean Spot Analysis</p>
+            </div>
+            <div class="stat-card glass">💬<p>Voices, Habits & Suggestions</p>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section id="about">
+            <h2>Why This Awareness Study Matters</h2>
+            <div class="grid-3">
+                <div class="card glass">
+                    <h3>🌿 Sustainability</h3>
+                    <p>Encouraging students to reduce waste and care for shared spaces.</p>
+                </div>
+                <div class="card glass">
+                    <h3>🤝 Student Perspective</h3>
+                    <p>Captures where students notice cleanliness issues and what they want improved.</p>
+                </div>
+                <div class="card glass">
+                    <h3>🏫 Campus Pride</h3>
+                    <p>A clean environment creates a healthier and better learning space.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contributors">
+            <h2>⭐ Clean Campus Champions</h2>
+            <p>Top featured profiles loaded from <strong>data/champions.js</strong>.</p>
+            <div id="topChampions" class="contributors"></div>
+        </section>
+        <section id="survey">
+            <div class="survey-box glass">
+                <h2>📊 MAIT Campus Cleanliness Perception & Awareness Survey</h2>
+                <a class="btn btn-primary"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdo12CjpAc1eFhgtj_4X0F0u7Bfyam3VjGQd6AWo4MiANOnZg/viewform?usp=sharing&ouid=117089921695388238124"
+                    target="_blank">Open Cleanliness Survey</a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p><strong>MAIT Clean Campus Awareness Study 2026</strong></p>
+        <p>Maharaja Agrasen Institute of Technology</p>
+    </footer>
+    <script src="data/champions.js"></script>
+    <script>const topContainer = document.getElementById('topChampions'); const topThree = championsData.filter(p => p.show).slice(0, 3); const tags = ['Featured Voice', 'Cleanliness Advocate', 'Campus Observer']; topContainer.innerHTML = topThree.map((p, i) => `<div class="person glass"><div class="star-tag">${tags[i % tags.length]}</div><div class="avatar"><img src="${p.image}" alt="${p.name}"></div><h3>${p.name}</h3><p><strong>Highlight:</strong> ${p.highlight}</p><p>${p.quote}</p><a class="linkedin-btn" href="${p.linkedin}" target="_blank">Connect on LinkedIn</a></div>`).join('');</script>
+</body>
+
+</html>

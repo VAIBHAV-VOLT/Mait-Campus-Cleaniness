@@ -1,0 +1,6 @@
+const championsData = [
+  { name: "Riya Sharma", highlight: "Consistent Cleanliness Habit", quote: "Always uses dustbins and encourages friends not to litter.", linkedin: "https://www.linkedin.com/in/riya-sharma/", image: "images/champions/riya.jpg", show: true },
+  { name: "Aman Verma", highlight: "Thoughtful Campus Suggestion", quote: "Suggested adding more dustbins near the canteen and open areas.", linkedin: "https://www.linkedin.com/in/aman-verma/", image: "images/champions/aman.jpg", show: true },
+  { name: "Priya Singh", highlight: "Strong Student Perspective", quote: "Believes campus cleanliness reflects student responsibility and awareness.", linkedin: "https://www.linkedin.com/in/priya-singh/", image: "images/champions/priya.jpg", show: true },
+  { name: "Karan Mehta", highlight: "Meaningful Student Voice", quote: "Shared how personal habits can influence the overall campus environment.", linkedin: "https://www.linkedin.com/in/karan-mehta/", image: "images/champions/karan.jpg", show: false }
+];
