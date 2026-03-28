@@ -173,7 +173,7 @@
         <div id="championsGrid" class="grid"></div>
     </div>
     <script src="data/champions.js"></script>
-    <script>const grid = document.getElementById('championsGrid'); const tags = ['Featured Voice', 'Cleanliness Advocate', 'Campus Observer', 'Student Insight', 'Clean Campus Voice', 'Awareness Contributor']; grid.innerHTML = championsData.filter(p => p.show).map((p, i) => `<div class="card"><div class="badge">${tags[i % tags.length]}</div><div class="avatar"><img src="${p.image}" alt="${p.name}"></div><h2>${p.name}</h2><div class="role">${p.highlight}</div><p class="desc">${p.quote}</p><a class="linkedin-btn" href="${p.linkedin}" target="_blank">Connect on LinkedIn</a></div>`).join('');</script>
+    <script>const grid = document.getElementById('championsGrid'); const tags = ['Featured Voice', 'Cleanliness Advocate', 'Campus Observer', 'Student Insight', 'Clean Campus Voice', 'Awareness Contributor']; grid.innerHTML = championsData.filter(p => p.show).map((p, i) => `<div class="card"><div class="badge">${tags[i % tags.length]}</div><div class="avatar"><img src="${p.image}" alt="${p.name}" onerror="this.src='images/champions/default.jpg'"></div><h2>${p.name}</h2><div class="role">${p.highlight}</div><p class="desc">${p.quote}</p><a class="linkedin-btn" href="${p.linkedin}" target="_blank">Connect on LinkedIn</a></div>`).join('');</script>
 </body>
 
 </html>

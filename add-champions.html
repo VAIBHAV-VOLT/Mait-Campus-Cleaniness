@@ -317,7 +317,7 @@
             submitBtn.innerHTML = '<div class="loading-spinner"></div>Adding...';
 
             try {
-                const response = await fetch('/api/add-champion', {
+                const response = await fetch(`${window.location.origin}/api/add-champion`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
