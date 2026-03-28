@@ -81,6 +81,35 @@
             color: var(--muted)
         }
 
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 3px;
+            background: var(--green);
+            margin: 4px 0;
+            transition: .3s
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px)
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px)
+        }
+
         .hero {
             padding: 56px 0 30px;
             margin-bottom: 40px
@@ -258,6 +287,34 @@
             .gallery-item.large {
                 grid-column: span 2
             }
+
+            .nav-toggle {
+                display: flex
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, .95);
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .3s ease-out;
+                border-bottom: 1px solid rgba(0, 0, 0, .08)
+            }
+
+            .nav-links.active {
+                max-height: 200px
+            }
+
+            .nav-links a {
+                padding: 16px 20px;
+                border-bottom: 1px solid rgba(0, 0, 0, .08);
+                display: block
+            }
         }
 
         @media(max-width:640px) {
@@ -280,7 +337,12 @@
                 <div class="brand-badge">🧹</div>
                 <div>MAIT Clean Campus Awareness Study</div>
             </div>
-            <div class="nav-links"><a href="#about">About</a><a href="#contributors">Champions</a><a
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks"><a href="#about">About</a><a href="#contributors">Champions</a><a
                     href="#survey">Survey</a></div>
         </div>
     </nav>
@@ -347,6 +409,24 @@
         <p>Maharaja Agrasen Institute of Technology</p>
     </footer>
     <script src="data/champions.js"></script>
+    <script>
+        // Hamburger menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
     <script>const topContainer = document.getElementById('topChampions'); const topThree = championsData.filter(p => p.show).slice(0, 3); const tags = ['Featured Voice', 'Cleanliness Advocate', 'Campus Observer']; topContainer.innerHTML = topThree.map((p, i) => `<div class="person glass"><div class="star-tag">${tags[i % tags.length]}</div><div class="avatar"><img src="${p.image}" alt="${p.name}"></div><h3>${p.name}</h3><p><strong>Highlight:</strong> ${p.highlight}</p><p>${p.quote}</p><a class="linkedin-btn" href="${p.linkedin}" target="_blank">Connect on LinkedIn</a></div>`).join('');</script>
 </body>
 
