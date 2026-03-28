@@ -1,0 +1,24 @@
+{
+  "name": "mait-campus-cleanliness",
+  "version": "1.0.0",
+  "description": "MAIT Campus Cleanliness Awareness Study",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VAIBHAV-VOLT/Mait-Campus-Cleaniness.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VAIBHAV-VOLT/Mait-Campus-Cleaniness/issues"
+  },
+  "homepage": "https://github.com/VAIBHAV-VOLT/Mait-Campus-Cleaniness#readme"
+}

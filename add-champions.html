@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Champion - MAIT Clean Campus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --text: #163020;
+            --muted: #5c7a67;
+            --green: #2e7d32;
+            --green-2: #4caf50;
+            --gold: #f9a826;
+            --shadow: 0 20px 40px rgba(22, 48, 32, .12);
+            --radius: 24px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at top left, rgba(76, 175, 80, .18), transparent 25%), radial-gradient(circle at top right, rgba(249, 168, 38, .15), transparent 22%), linear-gradient(135deg, #f7fff7, #eefcf0 45%, #f9fff5);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 40px 20px
+        }
+
+        .container {
+            width: min(600px, 92%);
+            margin: 0 auto
+        }
+
+        .title {
+            margin-bottom: 40px;
+            text-align: center
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--green)
+        }
+
+        .title p {
+            color: var(--muted);
+            margin-top: 8px;
+            font-size: 1rem
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, .82);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, .7);
+            backdrop-filter: blur(14px)
+        }
+
+        .form-group {
+            margin-bottom: 24px
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+            font-size: .95rem
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e4f4e6;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: .95rem;
+            color: var(--text);
+            transition: all 0.3s ease;
+            background: #fafbfa
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--green);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1)
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px
+        }
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 12px 16px;
+            background: #f0f8f3;
+            border: 2px dashed var(--green);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--green);
+            transition: all 0.3s ease
+        }
+
+        .file-upload-label:hover {
+            background: #e4f4e6;
+            border-color: var(--green-2)
+        }
+
+        .file-name {
+            margin-top: 8px;
+            font-size: .85rem;
+            color: var(--muted)
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--green), var(--green-2));
+            color: #fff
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.3)
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed
+        }
+
+        .btn-reset {
+            background: #e4f4e6;
+            color: var(--green);
+            border: 2px solid var(--green)
+        }
+
+        .btn-reset:hover {
+            background: #d4ede0
+        }
+
+        .success-message {
+            display: none;
+            padding: 16px;
+            background: #e8f5e9;
+            color: var(--green);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--green);
+            font-weight: 600
+        }
+
+        .error-message {
+            display: none;
+            padding: 16px;
+            background: #ffebee;
+            color: #c62828;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border-left: 4px solid #c62828;
+            font-weight: 600
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-right: 8px
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg) }
+        }
+
+        .btn-submit.loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media(max-width:600px) {
+            .form-container {
+                padding: 24px
+            }
+
+            .button-group {
+                flex-direction: column
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Add a New Champion</h1>
+            <p>Help us recognize outstanding contributors to campus cleanliness</p>
+        </div>
+
+        <div class="form-container">
+            <div id="successMessage" class="success-message">
+                ✓ Champion added successfully!
+            </div>
+            <div id="errorMessage" class="error-message">
+                Please fill in all required fields.
+            </div>
+
+            <form id="championForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter champion's name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="highlight">Highlight *</label>
+                    <input type="text" id="highlight" name="highlight"
+                        placeholder="e.g., Consistent Cleanliness Habit" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="quote">Quote/Description *</label>
+                    <textarea id="quote" name="quote"
+                        placeholder="What makes this person a champion? Share their impact..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile URL</label>
+                    <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/...">
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Profile Image Path</label>
+                    <input type="text" id="image" name="image" placeholder="images/champions/name.jpg">
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-submit" id="submitBtn">Add Champion</button>
+                    <button type="reset" class="btn btn-reset">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('championForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Validate required fields
+            const name = document.getElementById('name').value.trim();
+            const highlight = document.getElementById('highlight').value.trim();
+            const quote = document.getElementById('quote').value.trim();
+            const linkedin = document.getElementById('linkedin').value.trim();
+            const image = document.getElementById('image').value.trim();
+
+            if (!name || !highlight || !quote) {
+                errorMsg.textContent = 'Please fill in all required fields (Name, Highlight, Quote)';
+                errorMsg.style.display = 'block';
+                successMsg.style.display = 'none';
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="loading-spinner"></div>Adding...';
+
+            try {
+                const response = await fetch('/api/add-champion', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name,
+                        highlight,
+                        quote,
+                        linkedin: linkedin || '',
+                        image: image || 'images/champions/default.jpg'
+                    })
+                });
+
+                const text = await response.text();
+                let data;
+                
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    console.error('Response text:', text);
+                    throw new Error('Invalid response from server: ' + text.substring(0, 100));
+                }
+
+                if (response.ok && data.success) {
+                    // Show success message
+                    successMsg.style.display = 'block';
+                    errorMsg.style.display = 'none';
+
+                    // Reset form
+                    document.getElementById('championForm').reset();
+
+                    // Hide success message after 3 seconds
+                    setTimeout(() => {
+                        successMsg.style.display = 'none';
+                    }, 3000);
+                } else {
+                    throw new Error(data.error || 'Failed to add champion');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMsg.textContent = `Error: ${error.message}`;
+                errorMsg.style.display = 'block';
+                successMsg.style.display = 'none';
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Add Champion';
+            }
+        });
+
+        // Hide error message when user starts typing
+        document.querySelectorAll('#name, #highlight, #quote').forEach(field => {
+            field.addEventListener('input', () => {
+                document.getElementById('errorMessage').style.display = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>
